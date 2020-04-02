@@ -1,2 +1,2 @@
-# add-plus-api
-Add Plus API
+# add-plus
+Add Plus
