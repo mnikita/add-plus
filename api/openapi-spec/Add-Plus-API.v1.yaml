@@ -1,0 +1,86 @@
+openapi: 3.0.0
+info:
+  title: Add Plus API
+  version: '1.0'
+  description: A P I
+  contact:
+    name: Milos Milosavljevic
+    url: 'http://www.addplus.ch'
+    email: mmilosavljevic@addplus.ch
+  license:
+    name: Apache License Version 2.0
+    url: 'https://github.com/mnikita/add-plus-api/blob/master/LICENSE'
+servers:
+  - url: 'http://localhost:3000'
+paths:
+  /contacts:
+    post:
+      summary: Update Contacts
+      operationId: post-contacts
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/response'
+      description: Update Contacts from Odoo to Rentman
+      tags:
+        - contacts
+      requestBody:
+        description: 'null'
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                '':
+                  type: string
+            examples: {}
+    get:
+      summary: ''
+      operationId: get-contacts
+      responses:
+        '200':
+          description: OK
+          headers: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/response'
+      description: Get all contacts synchornized between Odoo and Rentman systems
+      tags:
+        - contacts
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/pagination'
+      parameters: []
+    parameters: []
+components:
+  schemas:
+    response:
+      title: response
+      type: object
+      properties:
+        limit:
+          type: integer
+        offset:
+          type: integer
+        data:
+          type: string
+        itemCount:
+          type: integer
+    pagination:
+      title: pagination
+      type: object
+      properties:
+        limit:
+          type: integer
+        offset:
+          type: integer
+  securitySchemes: {}
+tags:
+  - name: contacts
+    description: Everything about Contacts in Odoo and Rentman systems
